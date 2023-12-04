@@ -21,14 +21,3 @@ export const Container = styled.section`
     text-align: center;
   }
 `;
-
-export const Voltar = styled.div`
-  font-size: 18px !important;
-  margin: 0px 18px 0px 10px;
-  cursor: pointer;
-  align-items: flex-start;
-  justify-content: flex-start;
-  text-align: start;
-  display: flex;
-  color: #000000;
-`;

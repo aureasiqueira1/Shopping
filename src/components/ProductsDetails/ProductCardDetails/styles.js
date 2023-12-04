@@ -2,7 +2,7 @@ import styled from "styled-components";
 
 export const ProductDescription = styled.section`
   width: 100%;
-  max-width: 1950px;
+  max-width: 1100px;
   background-color: white;
   display: flex;
   flex-direction: column;
