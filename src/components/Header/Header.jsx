@@ -13,7 +13,9 @@ import { FavoriteStatus, GroupIcon, HeaderSection, Name } from './styles';
 import CartButton from '../Cart/CartButton/CartButton';
 
 function Header() {
-  const { user } = useAuth();
+  const userToken = localStorage.getItem("user_token");
+  const usersStorage = localStorage.getItem("users_bd");
+
   const { signout } = useAuth();
   const navigate = useNavigate();
   const { favoriteItems } = useContext(AppContext);
@@ -34,15 +36,16 @@ function Header() {
             <CartButton />
           </Link>
 
-          {!!user && (
-            <Link to="/favorites" className="favoritos">
-              <MdFavorite />
-              {favoriteItems.length > 0 && <FavoriteStatus>{favoriteItems.length}</FavoriteStatus>}
-              <Name>Favoritos</Name>
-            </Link>
-          )}
+          {(userToken && usersStorage)
+            && (
+              <Link to="/favorites" className="favoritos">
+                <MdFavorite />
+                {favoriteItems.length > 0 && <FavoriteStatus>{favoriteItems.length}</FavoriteStatus>}
+                <Name>Favoritos</Name>
+              </Link>
+            )}
 
-          {!!user ? (
+          {(userToken && usersStorage) ? (
             <Link className="icon">
               <MdLogout className="logout" onClick={() => [signout(), navigate("/")]} />
               <Name onClick={() => [signout(), navigate("/")]} >Sair</Name>

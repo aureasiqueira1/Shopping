@@ -9,10 +9,10 @@ import { MdFavoriteBorder } from "react-icons/md";
 import { ButtonAddCard, ButtonAddFavorite, ButtonProduct, CardImage, CardInfos, CardPrice, CardTitle, ProductCardSection } from './styles';
 import AppContext from '../../../context/AppContext';
 import formatCurrency from '../../../utils/formatCurrency';
-import useAuth from '../../../hooks/useAuth';
 
 function ProductCard({ data }) {
-  const { user } = useAuth();
+  const userToken = localStorage.getItem("user_token");
+  const usersStorage = localStorage.getItem("users_bd");
 
   const { title, thumbnail, price } = data;
 
@@ -31,7 +31,7 @@ function ProductCard({ data }) {
   };
 
   const handleAddCartFavorite = () => {
-    if (!!user) {
+    if ((userToken && usersStorage)) {
       setFavoriteItems([...favoriteItems, data])
       localStorage.setItem("favorite", JSON.stringify([...favoriteItems, data]))
     }

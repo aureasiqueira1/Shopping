@@ -4,11 +4,11 @@ import './CartDetails.css';
 import CartItem from '../CartItem/CartItem';
 import AppContext from '../../../context/AppContext';
 import formatCurrency from '../../../utils/formatCurrency';
-import useAuth from '../../../hooks/useAuth';
 import { ButtonCheckout, CartItems, CartResume } from './styles';
 
 function CartDetails() {
-  const { user } = useAuth();
+  const userToken = localStorage.getItem("user_token");
+  const usersStorage = localStorage.getItem("users_bd");
 
   const { isCartVisible } = useContext(AppContext);
 
@@ -17,7 +17,7 @@ function CartDetails() {
   const totalPrice = cart?.reduce((acc, item) => item.price + acc, 0);
 
   function downloadObjectAsJson(exportObj, exportName) {
-    if (!!user) {
+    if (userToken && usersStorage) {
       var dataStr = "data:text/json;charset=utf-8," + encodeURIComponent(JSON.stringify(exportObj));
       var downloadAnchorNode = document.createElement('a');
       downloadAnchorNode.setAttribute("href", dataStr);
