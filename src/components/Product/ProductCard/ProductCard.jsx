@@ -68,7 +68,6 @@ function ProductCard({ data }) {
       <ButtonAddFavorite
         type="button"
         className="button_add-favorite"
-
         onClick={handleAddCartFavorite}
       >
         <MdFavoriteBorder />

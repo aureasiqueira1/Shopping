@@ -69,13 +69,18 @@ export const ButtonAddCard = styled.button`
 `;
 
 export const ButtonAddFavorite = styled.button`
-  border: none;
+  position: absolute;
+  top: 10;
+  right: 0;
   width: 45px;
   height: 45px;
+  margin: 61px 15px;
   color: #d60c0c;
+  align-items: center;
+  justify-content: center;
+  border: none;
   border-radius: 50px;
   background-color: rgba(255, 255, 255, 0.8);
   font-size: 1.5rem;
   cursor: pointer;
-  margin: -30px 0 0 20px;
 `;
